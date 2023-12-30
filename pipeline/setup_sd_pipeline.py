@@ -4,6 +4,7 @@ from utils.control_net_utils import CONTROLNET_MAPPING
 
 device = "cuda"
 d_type = torch.float16
+pipe=None
 torch.cuda.empty_cache()
 
 
