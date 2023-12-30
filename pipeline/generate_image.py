@@ -42,7 +42,7 @@ def generate_image(base_request: BaseSDRequest,req_id):
         controlnet_conditioning_scale=base_request.controlnet_conditioning_scale,
         num_inference_steps=base_request.num_inference_steps,
         guidance_scale=base_request.guidance_scale,
-    ).images[0]
+    )
 
     final_image_path = f"assets/generations/output/output_logo{req_id}.png"
     # Extract the directory path from the final_image_path
