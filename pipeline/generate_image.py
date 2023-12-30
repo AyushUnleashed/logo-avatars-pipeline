@@ -9,16 +9,18 @@ import os
 
 # Define a global variable to track the loaded model path
 current_model_path = None
-current_control_type=None
+current_control_type= None
 pipe_control_net = None
 
 
 def load_pipeline(model_path, control_type):
-    global current_model_path, pipe_control_net
+    global current_model_path, pipe_control_net,current_control_type
     if current_model_path != model_path or control_type != current_control_type:
         # Load the pipeline only if the model path or control type has changed
-        pipe_control_net = setup_pipeline(base_model_path=model_path,control_type=control_type)
+        pipe_control_net = setup_pipeline(base_model_path=model_path, control_type=control_type)
         current_model_path = model_path
+        current_control_type = control_type
+
         print(f"\nChanging model to {model_path} & control_type to {control_type}\n")
 
 
