@@ -9,22 +9,23 @@ import os
 
 # Define a global variable to track the loaded model path
 current_model_path = None
+current_control_type=None
 pipe_control_net = None
 
 
-def load_pipeline(model_path):
+def load_pipeline(model_path, control_type):
     global current_model_path, pipe_control_net
-    if current_model_path != model_path:
-        # Load the pipeline only if the model path has changed
-        pipe_control_net = setup_pipeline(base_model_path=model_path)
+    if current_model_path != model_path or control_type != current_control_type:
+        # Load the pipeline only if the model path or control type has changed
+        pipe_control_net = setup_pipeline(base_model_path=model_path,control_type=control_type)
         current_model_path = model_path
-        print(f"\nChanging model to {model_path}\n")
+        print(f"\nChanging model to {model_path} & control_type to {control_type}\n")
 
 
 
 def generate_image(base_request: BaseSDRequest,req_id):
     # Load the pipeline based on the model path in the request
-    load_pipeline(base_request.base_model)
+    load_pipeline(base_request.base_model, base_request.control_type)
 
     # Decode the base64-encoded image
     control_net_image = decode_base64_image(base_request.encoded_control_net_image)
