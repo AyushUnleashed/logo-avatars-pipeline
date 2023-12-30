@@ -1,0 +1,9 @@
+Pillow
+transformers
+diffusers
+fastapi
+requests
+uvicorn
+python-dotenv
+controlnet_hinter==0.0.5
+pydantic
