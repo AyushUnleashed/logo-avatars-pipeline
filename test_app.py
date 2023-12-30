@@ -22,7 +22,7 @@ def main():
                             negative_prompt=negative_prompt,
                             control_type=control_type,
                             encoded_control_net_image=encoded_control_net_image,
-                            controlnet_conditioning_scale=0.6,
+                            controlnet_conditioning_scale=2.0,
                             guidance_scale=4.0,
                             num_inference_steps=20,
                             height=512,
