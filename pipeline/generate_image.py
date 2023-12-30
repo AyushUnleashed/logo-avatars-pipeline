@@ -44,18 +44,25 @@ def generate_image(base_request: BaseSDRequest,req_id):
         guidance_scale=base_request.guidance_scale,
     )
 
-    final_image_path = f"assets/generations/output/output_logo{req_id}.png"
-    # Extract the directory path from the final_image_path
-    directory = os.path.dirname(final_image_path)
+    # Extract the directory path for the final images
+    directory = "assets/generations/output/"
     control_directory = os.path.dirname(control_image_path)
 
     # Create the directory and any missing parent directories if they don't exist
     os.makedirs(directory, exist_ok=True)
     os.makedirs(control_directory,exist_ok=True)
 
-    images[0].save(final_image_path)
-    images[0].save("output_logo_preview.png")
+    final_image_path = ""
+    # Save each image in the list
+    for i, image in enumerate(images):
+        final_image_path = f"{directory}output_logo_{i}_{req_id}.png"
+        image.save(final_image_path)
+        image.save("output_logo_preview.png")
+
+    # images[0].save("output_logo_preview.png")
     control_image.save(control_image_path)
+
+    # send the path of last image
     return final_image_path
 
 
