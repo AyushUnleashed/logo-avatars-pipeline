@@ -7,7 +7,7 @@ d_type = torch.float16
 torch.cuda.empty_cache()
 
 
-def setup_pipeline(base_model_path: str = "Yntec/epiCPhotoGasm"):
+def setup_pipeline(base_model_path: str = "digiplay/Juggernaut_final"):
 
     control_type = "pose"
     controlnet = ControlNetModel.from_pretrained(CONTROLNET_MAPPING[control_type]["model_id"], torch_dtype=d_type).to(device)
