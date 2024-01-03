@@ -7,7 +7,7 @@ from diffusers.utils import load_image
 import os
 
 
-# Define a global variable to track the loaded model path
+# Define global variables to track the loaded model paths & pipeline
 current_model_path = None
 current_control_type= None
 pipe_control_net = None
@@ -31,11 +31,13 @@ def generate_image(base_request: BaseSDRequest,req_id):
 
     # Decode the base64-encoded image
     control_net_image = decode_base64_image(base_request.encoded_control_net_image)
-    control_image = CONTROLNET_MAPPING[base_request.control_type]["hinter"](control_net_image)
-    control_image_path = f"assets/generations/control_net/output_control_image_{req_id}.png"
 
+    # create control image for the pipeline using hinter
+    control_image = CONTROLNET_MAPPING[base_request.control_type]["hinter"](control_net_image)
 
     print("DEBUG: before calling generate ")
+
+    # saving the images array
     images = pipe_control_net(
         prompt=base_request.prompt,
         negative_prompt=base_request.negative_prompt,
@@ -49,13 +51,18 @@ def generate_image(base_request: BaseSDRequest,req_id):
 
     # Extract the directory path for the final images
     directory = "assets/generations/output/"
+    control_image_path = f"assets/generations/control_net/output_control_image_{req_id}.png"
     control_directory = os.path.dirname(control_image_path)
 
     # Create the directory and any missing parent directories if they don't exist
     os.makedirs(directory, exist_ok=True)
     os.makedirs(control_directory,exist_ok=True)
 
+    # save controlnet image
+    control_image.save(control_image_path)
+
     final_image_path = ""
+
     # Save each image in the list
     for i, image in enumerate(images):
         final_image_path = f"{directory}output_logo_{i}_{req_id}.png"
@@ -63,7 +70,7 @@ def generate_image(base_request: BaseSDRequest,req_id):
         image.save("output_logo_preview.png")
 
     # images[0].save("output_logo_preview.png")
-    control_image.save(control_image_path)
+
 
     # send the path of last image
     return final_image_path
