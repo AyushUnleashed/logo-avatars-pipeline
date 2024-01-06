@@ -1,5 +1,8 @@
 
-# Logo Avatars Pipeline Repository
+# Logo Avatars Pipeline Repository 
+<a target="_blank" href="https://colab.research.google.com/github/AyushUnleashed/logo-avatars-pipeline/blob/main/Logo_avatars_notebook.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
 
 ![Logo Avatars Preview](assets/logo_avatars_banner.png)
 
@@ -20,7 +23,8 @@ This repository contains the backend of a Stable Diffusion application, specific
 - After inference, the final image is re-encoded in Base64 and returned to the user.
 
 ## Google Colab Notebook
-Included in the repository is a Google Colab notebook for the Logo Avatars project. This interactive notebook allows you to run the entire process and see the results in real-time.
+Included in the repository is a Google Colab notebook for the Logo Avatars POC. This interactive notebook allows you to run the entire process and see the results in real-time.
+Just copy link of any image & run it.
 [Colab Notebook](https://github.com/AyushUnleashed/logo-avatars-pipeline/blob/main/Logo_avatars_notebook.ipynb)
 
 
