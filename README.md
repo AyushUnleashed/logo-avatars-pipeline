@@ -23,8 +23,6 @@ This repository contains the backend of a Stable Diffusion application, specific
 Included in the repository is a Google Colab notebook for the Logo Avatars project. This interactive notebook allows you to run the entire process and see the results in real-time.
 [Colab Notebook](https://github.com/AyushUnleashed/logo-avatars-pipeline/blob/main/Logo_avatars_notebook.ipynb)
 
-Certainly! Here's the Markdown code for the updated API reference for your Logo Avatars application:
-
 
 ## API Reference
 
