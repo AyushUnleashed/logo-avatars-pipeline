@@ -6,6 +6,8 @@
 
 ![Logo Avatars Preview](assets/logo_avatars_banner.png)
 
+## Blog Explanation: [Medium](https://medium.com/@ayushunleashed/how-to-build-your-first-genai-app-with-stable-diffusion-00600001680b)
+
 ## Overview
 This repository contains the backend of a Stable Diffusion application, specifically designed for generating creative logos. The app utilizes Stable Diffusion version 1.5 integrated with a Control Net Canny model to transform standard logos into more creative versions.
 
